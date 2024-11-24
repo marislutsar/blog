@@ -1,5 +1,5 @@
 @extends('partials.layout')
-@section('title', 'Home')
+@section('title', $post->title)
 @section('content')
     <div class="card bg-base-100 shadow-xl">
         <figure>
