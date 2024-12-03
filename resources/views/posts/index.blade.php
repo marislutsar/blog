@@ -26,6 +26,7 @@
                         <div class="join">
                             <a class="join-item btn btn-info" href="{{ route('posts.show', ['post' => $post]) }}">View</a>
                             <a class="join-item btn btn-warning" href="{{ route('posts.edit', ['post' => $post]) }}">Edit</a>
+                            {{-- õp liigutas buttoni vormist lahku et alternatiivi näidata--}}
                             <form action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
