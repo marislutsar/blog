@@ -32,10 +32,8 @@
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
-                <li>
                     <a class="join-item btn" href="{{ $paginator->nextPageUrl() }}" rel="next"
                         aria-label="@lang('pagination.next')">»</a>
-                </li>
             @else
                 <a class="join-item btn btn-disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
                     <span aria-hidden="true">»</span>

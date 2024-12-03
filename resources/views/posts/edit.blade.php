@@ -1,10 +1,10 @@
 @extends('partials.layout')
-@section('title', 'New Post')
+@section('title', 'Edit post')
 @section('content')
     <div class="card bg-base-300 w-2/3 mx-auto">
         <div class="card-body">
             <h2 class="card-title">Edit post</h2>
-            <form action="{{ route('posts.update', ['post' => $post]) }}" method=POST">
+            <form action="{{ route('posts.update', ['post' => $post]) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <label class="form-control w-full">
