@@ -4,7 +4,7 @@
     <div class="card bg-base-300 w-2/3 mx-auto">
         <div class="card-body">
             <h2 class="card-title">Edit post</h2>
-            <form action="{{ route('posts.update', ['post' => $post]) }}" method="POST">
+            <form action="{{ route('posts.update', ['post' => $post]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <label class="form-control w-full">
@@ -28,6 +28,19 @@
                         placeholder="Write your post content">{{ old('body') ?? $post->body }}</textarea>
                     <div class="label">
                         @error('body')
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </label>
+
+                <label class="form-control w-full">
+                    <div class="label">
+                        <span class="label-text">Image</span>
+                    </div>
+                    <input name="image" type="file" accept="image/*"
+                        class="file-input file-input-bordered w-full @error('image') file-input-error @enderror" />
+                    <div class="label">
+                        @error('image')
                             <span class="label-text-alt text-error">{{ $message }}</span>
                         @enderror
                     </div>

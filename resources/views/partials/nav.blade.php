@@ -2,7 +2,7 @@
     <div>
         <a href="{{ route('home') }}" class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
     </div>
-    <div>
+    <div class="flex-1">
         <ul class="menu menu-horizontal px-1">
             <li><a href="{{ route('page1') }}">Page 1</a></li>
             <li><a href="{{ route('page2') }}">Page 2</a></li>
@@ -16,5 +16,9 @@
                 </details>
             </li>
         </ul>
+    </div>
+    <div class="gap-1">
+        <a href="{{route('register')}}" class="btn btn-primary">Register</a>
+        <a href="{{route('login')}}" class="btn btn-secondary">Log in</a>
     </div>
 </div>
