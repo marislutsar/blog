@@ -6,19 +6,38 @@
         <ul class="menu menu-horizontal px-1">
             <li><a href="{{ route('page1') }}">Page 1</a></li>
             <li><a href="{{ route('page2') }}">Page 2</a></li>
-            <li>
-                <details>
-                    <summary>Admin</summary>
-                    <ul class="bg-base-100 rounded-t-none p-2">
-                        <li><a href="{{ route('posts.index') }}">Posts</a></li>
-                        <li><a>Link2</a></li>
-                    </ul>
-                </details>
-            </li>
+            @auth
+                <li class="z-10">
+                    <details>
+                        <summary>Admin</summary>
+                        <ul class="bg-base-100 rounded-t-none p-2">
+                            <li><a href="{{ route('posts.index') }}">Posts</a></li>
+                            <li><a>Link2</a></li>
+                        </ul>
+                    </details>
+                </li>
+            @endauth
         </ul>
     </div>
     <div class="gap-1">
-        <a href="{{route('register')}}" class="btn btn-primary">Register</a>
-        <a href="{{route('login')}}" class="btn btn-secondary">Log in</a>
+        @guest
+            <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+            <a href="{{ route('login') }}" class="btn btn-secondary">Log in</a>
+        @else
+            <ul class="menu menu-horizontal px-1">
+                <li class="z-10">
+                    <details>
+                        <summary>{{ auth()->user()->name }}</summary>
+                        <ul class="bg-base-100 rounded-t-none p-2">
+                            <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                            <li><button form="logout">Log out</button></li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>  
+            <form id="logout" action="{{ route('logout') }}" method="POST">
+                @csrf
+            </form>
+        @endguest
     </div>
 </div>

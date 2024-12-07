@@ -15,28 +15,24 @@ class Post extends Model
 
     protected $fillable = ['title', 'body', 'image'];
 
-    // public function getSnippetAttribute()
-    // {
+    // public function getSnippetAttribute(){
     //     return explode("\n\n", $this->body)[0];
     // }
 
-    public function snippet(): Attribute
-    {
-        return Attribute::get(function () {
+    public function snippet(): Attribute {
+        return Attribute::get(function (){
             return explode("\n\n", $this->body)[0];
         });
     }
 
-    public function displayBody(): Attribute
-    {
-        return Attribute::get(function () {
-            return n12br($this->body);
+    public function displayBody(): Attribute {
+        return Attribute::get(function (){
+            return nl2br($this->body);
         });
     }
 
-    public function displayImage(): Attribute
-    {
-        return Attribute::get(function () {
+    public function displayImage(): Attribute {
+        return Attribute::get(function (){
             if(!$this->image || parse_url($this->image, PHP_URL_SCHEME)){
                 return $this->image;
             }
@@ -45,7 +41,7 @@ class Post extends Model
     }
 
     public function image(): Attribute {
-        return Attribute::set(function ($image) {
+        return Attribute::set(function ($image){
             if($image instanceof UploadedFile){
                 return $image->store('', ['disk' => 'public']);
             }
@@ -53,6 +49,13 @@ class Post extends Model
         });
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
     /**
      * The "booted" method of the model.
      */
