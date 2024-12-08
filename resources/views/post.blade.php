@@ -26,8 +26,8 @@
         <div class="mt-2 shadow-xl card bg-base-100">
             <div class="card-body">
                 <p>{{ $comment->body }}</p>
-                <p class="text-neutral-content">{{ $comment->created_at->diffForHumans() }}</p>
-                <p class="text-info-content">
+                <p class="text-neutral">{{ $comment->created_at->diffForHumans() }}</p>
+                <p class="text-neutral">
                     {{ $comment->user->name }}
                 </p>
             </div>
