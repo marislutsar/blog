@@ -61,9 +61,4 @@ class PublicController extends Controller
         }
         return redirect()->back();
     }
-
-    public function tag(Tag $tag){
-        $posts = $tag->posts()->with('user')->withCount('comments')->latest()->paginate(16);
-        return view('index', compact('posts'));
-    }
 }

@@ -16,8 +16,16 @@ class TagFactory extends Factory
      */
     public function definition(): array
     {
+        $created = fake()->dateTimeBetween();
+        $updated = fake()->dateTimeBetween($created);
+        if(rand(0,9)){
+            $updated = $created;
+        }
+
         return [
-            'name' => fake()->unique()->word()
+            'name' => fake()->unique()->word(),
+            'created_at' => $created,
+            'updated_at' => $updated,
         ];
     }
 }

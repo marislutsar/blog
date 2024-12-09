@@ -12,7 +12,7 @@
                         <summary>Admin</summary>
                         <ul class="bg-base-100 rounded-t-none p-2">
                             <li><a href="{{ route('posts.index') }}">Posts</a></li>
-                            <li><a>Link2</a></li>
+                            <li><a href="{{ route('tags.index') }}">Tags</a></li>
                         </ul>
                     </details>
                 </li>
