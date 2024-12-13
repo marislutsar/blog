@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
     </div>
@@ -22,4 +22,41 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
+
+
+@extends('partials.layout')
+@section('title', __('Log in'))
+@section('content')
+    <div class="w-1/3 mx-auto card bg-base-300">
+        <div class="card-body">
+            <div class="text-s">
+                <p>Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
+            </div>
+                <form action="{{ route('password.email') }}" method="POST">
+                    <!-- Session Status - annab teada, et email on saadetud -->
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
+                    
+                    @csrf
+
+                    <label class="w-full form-control">
+                        <div class="label">
+                            <span class="label-text">{{__('Email')}}</span>
+                        </div>
+                        <input name="email" type="email" placeholder="Email" {{-- value="{{ old('email') }}" --}} class="w-full input input-bordered @error('email')  input-error @enderror" required autofocus/>
+                        <div class="label">
+                            @error('email')
+                                <span class="label-text-alt text-error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </label>
+
+                    <div class="form-control w-fit"></div>
+
+                    <div class="text-right">
+                        <input type="submit" class="btn btn-primary" value="Email Password Reset Link">
+                    </div>
+                </form>
+            </div>
+    </div>
+@endsection

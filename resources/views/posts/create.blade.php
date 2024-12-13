@@ -6,6 +6,7 @@
             <h2 class="card-title">New post</h2>
             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                
                 <label class="form-control w-full">
                     <div class="label">
                         <span class="label-text">Title</span>

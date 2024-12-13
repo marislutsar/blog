@@ -28,6 +28,10 @@ Route::get('/tag/{tag}', [PublicController::class, 'tag'])->name('tag');
 // Route::put('/admin/tags/{tag}/edit', [TagController::class, 'update'])->name('tags.update');
 // Route::delete('/admin/tags/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
 
+Route::get('/secure', function(){
+    return redirect()->route('home');
+})->middleware(['password.confirm']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

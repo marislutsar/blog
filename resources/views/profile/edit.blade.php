@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Profile') }}
@@ -26,4 +26,34 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app-layout> --}}
+
+@extends('partials.layout')
+@section('title', __('Profile'))
+@section('content') 
+
+    <h2 class="font-semibold text-2xl leading-tight mt-10 ml-48">
+        {{ __('Profile') }}
+    </h2>
+
+    
+    <div class="max-w-6xl mx-auto card">
+        <div class="p-4 sm:p-8 bg-base-300 my-5 shadow sm:rounded-lg">
+            <div class="max-w-xl">
+                @include('profile.partials.update-profile-information-form')
+            </div>
+        </div>
+
+        <div class="p-4 sm:p-8 bg-base-300 my-4 shadow sm:rounded-lg">
+            <div class="max-w-xl">
+                @include('profile.partials.update-password-form')
+            </div>
+        </div>
+ 
+        <div class="p-4 sm:p-8 bg-base-300 my-4 shadow sm:rounded-lg">
+            <div class="max-w-xl">
+                @include('profile.partials.delete-user-form')
+            </div>
+        </div>
+    </div>    
+@endsection
